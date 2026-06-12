@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Agent Files
+.claude/
+CLAUDE.md
+README.md

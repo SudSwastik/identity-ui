@@ -1,0 +1,46 @@
+<app-auth-card brandName="Identity">
+
+  @if (verified()) {
+    <div class="banner banner--success">
+      Email verified. Please sign in.
+    </div>
+  }
+
+  @if (error()) {
+    <div class="banner banner--error">{{ error() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <app-form-field label="Email" [errorMessage]="emailError">
+      <input
+        class="input"
+        type="email"
+        formControlName="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+    </app-form-field>
+
+    <app-form-field label="Password" [errorMessage]="passwordError">
+      <input
+        class="input"
+        type="password"
+        formControlName="password"
+        placeholder="••••••••"
+        autocomplete="current-password"
+      />
+    </app-form-field>
+
+    <button appButton type="submit" [loading]="loading()" [disabled]="loading()">
+      Sign In
+    </button>
+
+  </form>
+
+  <p class="footer-text">
+    Don't have an account?
+    <a routerLink="/auth/register">Sign up</a>
+  </p>
+
+</app-auth-card>
