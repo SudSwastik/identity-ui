@@ -1,0 +1,60 @@
+<app-auth-card brandName="Identity">
+
+  @if (error()) {
+    <div class="banner banner--error">{{ error() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <app-form-field label="Name" [errorMessage]="nameError">
+      <input
+        class="input"
+        type="text"
+        formControlName="name"
+        placeholder="Jane Smith"
+        autocomplete="name"
+      />
+    </app-form-field>
+
+    <app-form-field label="Email" [errorMessage]="emailError">
+      <input
+        class="input"
+        type="email"
+        formControlName="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+    </app-form-field>
+
+    <app-form-field label="Password" [errorMessage]="passwordError">
+      <input
+        class="input"
+        type="password"
+        formControlName="password"
+        placeholder="••••••••"
+        autocomplete="new-password"
+      />
+    </app-form-field>
+
+    <app-form-field label="Confirm Password" [errorMessage]="confirmPasswordError">
+      <input
+        class="input"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="••••••••"
+        autocomplete="new-password"
+      />
+    </app-form-field>
+
+    <button appButton type="submit" [loading]="loading()" [disabled]="loading()">
+      Create Account
+    </button>
+
+  </form>
+
+  <p class="footer-text">
+    Already have an account?
+    <a routerLink="/auth/login">Sign in</a>
+  </p>
+
+</app-auth-card>
