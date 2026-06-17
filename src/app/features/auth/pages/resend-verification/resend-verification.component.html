@@ -1,0 +1,40 @@
+<app-auth-card brandName="Identity">
+
+  @if (success()) {
+    <div class="banner banner--success">
+      Code sent! Check your inbox and enter it on the verification page.
+    </div>
+  }
+
+  @if (error()) {
+    <div class="banner banner--error">{{ error() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+    <app-form-field label="Email" [errorMessage]="emailError">
+      <input
+        class="input"
+        type="email"
+        formControlName="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+    </app-form-field>
+
+    <button appButton type="submit" [loading]="loading()" [disabled]="loading()">
+      Send Code
+    </button>
+
+  </form>
+
+  <p class="footer-text">
+    Already have a code?
+    <a routerLink="/auth/verify-email" [queryParams]="verifyParams">Enter it here</a>
+  </p>
+
+  <p class="footer-text">
+    <a routerLink="/auth/login">Back to sign in</a>
+  </p>
+
+</app-auth-card>
