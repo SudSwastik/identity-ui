@@ -11,7 +11,7 @@ export interface LoginRequest {
 
 export interface VerifyEmailRequest {
   email: string;
-  code: string;
+  confirmationCode: string;
 }
 
 export interface ResendRequest {
