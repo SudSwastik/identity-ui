@@ -36,4 +36,8 @@ export class AuthService {
   resendVerification(req: ResendRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/api/auth/resend-verification`, req);
   }
+
+  logout(): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/api/auth/logout`, {});
+  }
 }

@@ -31,4 +31,10 @@ export const AUTH_ROUTES: Routes = [
         .then(m => m.ResendVerificationComponent),
     title: 'Resend Code',
   },
+  {
+    path: 'logout',
+    loadComponent: () =>
+      import('./pages/logout/logout.component').then(m => m.LogoutComponent),
+    title: 'Sign Out',
+  },
 ];
