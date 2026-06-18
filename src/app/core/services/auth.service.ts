@@ -2,8 +2,10 @@ import { inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
+  AuthTokens,
   LoginRequest,
   LoginResponse,
+  RefreshRequest,
   RegisterRequest,
   VerifyEmailRequest,
   ResendRequest,
@@ -35,6 +37,10 @@ export class AuthService {
 
   resendVerification(req: ResendRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/api/auth/resend-verification`, req);
+  }
+
+  refresh(req: RefreshRequest): Observable<AuthTokens> {
+    return this.http.post<AuthTokens>(`${this.baseUrl}/api/auth/refresh`, req);
   }
 
   logout(): Observable<void> {

@@ -38,6 +38,12 @@ export interface AuthTokens {
   accessToken: string;
   refreshToken: string;
   idToken: string;
+  username?: string;
+}
+
+export interface RefreshRequest {
+  refreshToken: string;
+  username: string;
 }
 
 export interface MfaChallengeResponse {
